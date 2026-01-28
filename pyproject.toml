@@ -15,4 +15,4 @@ dependencies = [
 ]
 
 [project.scripts]
-image-comment = "addfootnote:main"
+addfootnote = "src:main"

@@ -54,6 +54,8 @@ def parse_color(color_str):
 
 
 def load_font(font_path, font_size):
+    if not font_path.endswith(".ttf"):
+        font_path += ".ttf"
     try:
         if font_path:
             return ImageFont.truetype(font_path, font_size)
