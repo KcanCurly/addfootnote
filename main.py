@@ -192,8 +192,8 @@ def main():
 
     parser.add_argument(
         "-f", "--font",
-        default=None,
-        help="Path to TTF font"
+        default="arial",
+        help="Font name or path"
     )
 
     parser.add_argument(
