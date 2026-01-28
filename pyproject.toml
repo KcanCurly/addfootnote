@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "image-comment"
+version = "1.0.0"
+description = "Add a comment area to the bottom of an image"
+authors = [
+  { name = "Kerim Can Karaduman" }
+]
+requires-python = ">=3.8"
+dependencies = [
+  "Pillow"
+]
+
+[project.scripts]
+image-comment = "addfootnote:main"

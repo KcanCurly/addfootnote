@@ -1,0 +1,1 @@
+This tool adds an annotation to bottom of the pic, extending the pic.
