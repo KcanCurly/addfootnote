@@ -175,7 +175,7 @@ def main():
     parser.add_argument(
         "-p", "--padding",
         default="200",
-        help="Bottom padding (pixels or %)"
+        help="Bottom padding (pixels or %%)"
     )
 
     parser.add_argument(
@@ -220,7 +220,7 @@ def main():
     parser.add_argument(
         "--wrap-width",
         default="90%",
-        help="Wrap width (pixels or % of image width)"
+        help="Wrap width (pixels or %% of image width)"
     )
 
     args = parser.parse_args()
