@@ -96,7 +96,7 @@ def wrap_for_multiline(draw, text, font, max_width):
     # Normalize escaped newlines
     text = text.replace("\\n", "\n")
 
-    approx_chars_per_line = max_width // 5
+    approx_chars_per_line = max_width // 7
 
     wrapped_blocks = []
     for paragraph in text.split("\n"):
