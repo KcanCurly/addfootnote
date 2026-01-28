@@ -8,6 +8,34 @@ from PIL import Image, ImageDraw, ImageFont, ImageColor
 
 # ---------- parsing helpers ----------
 
+def wrap_text(draw, text, font, max_width, spacing=4):
+    words = text.split()
+    lines = []
+    current = ""
+
+    for word in words:
+        test = word if not current else current + " " + word
+
+        bbox = draw.multiline_textbbox(
+            (0, 0),
+            test,
+            font=font,
+            spacing=spacing
+        )
+        text_width = bbox[2] - bbox[0]
+
+        if text_width <= max_width:
+            current = test
+        else:
+            if current:
+                lines.append(current)
+            current = word
+
+    if current:
+        lines.append(current)
+
+    return "\n".join(lines)
+
 def parse_padding(padding_str, image_height):
     padding_str = padding_str.strip()
 
@@ -68,11 +96,7 @@ def wrap_for_multiline(draw, text, font, max_width):
     # Normalize escaped newlines
     text = text.replace("\\n", "\n")
 
-    # Estimate average character width
-    avg_char_width = draw.textlength(
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ", font=font
-    ) / 26
-    max_chars = max(1, int(max_width / avg_char_width))
+    approx_chars_per_line = max_width // 5
 
     wrapped_blocks = []
     for paragraph in text.split("\n"):
@@ -80,7 +104,7 @@ def wrap_for_multiline(draw, text, font, max_width):
             wrapped_blocks.append("")
         else:
             wrapped_blocks.append(
-                textwrap.fill(paragraph, width=max_chars)
+                textwrap.fill(paragraph, width=approx_chars_per_line)
             )
 
     return "\n".join(wrapped_blocks)
