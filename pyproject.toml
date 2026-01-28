@@ -15,4 +15,4 @@ dependencies = [
 ]
 
 [project.scripts]
-addfootnote = "src.main:main"
+addfootnote = "main:main"
